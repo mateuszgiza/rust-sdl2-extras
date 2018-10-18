@@ -1,5 +1,5 @@
 [package]
-name = "rust-sdl2-extras"
+name = "sdl2-extras"
 version = "0.0.1"
 authors = ["Mateusz Giza <matgizq@gmail.com>"]
 license = "MIT"
