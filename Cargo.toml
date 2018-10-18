@@ -4,6 +4,9 @@ version = "0.0.1"
 authors = ["Mateusz Giza <matgizq@gmail.com>"]
 repository = "https://github.com/mateuszgiza/rust-sdl2-extras"
 
+[badges]
+travis-ci = { repository = "mateuszgiza/rust-sdl2-extras", branch = "master" }
+
 [dependencies.sdl2]
     version = "0.31"
     default-features = false
