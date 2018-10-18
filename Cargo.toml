@@ -1,0 +1,9 @@
+[package]
+name = "rust-sdl2-extras"
+version = "0.0.1"
+authors = ["Mateusz Giza <matgizq@gmail.com>"]
+
+[dependencies.sdl2]
+    version = "0.31"
+    default-features = false
+    features = ["ttf","image"]
