@@ -1,0 +1,15 @@
+language: rust
+rust:
+  - stable
+cache: cargo
+  
+addons:
+  apt:
+    update: true
+    cache: true
+    packages:
+      - libegl1-mesa-dev
+      - libgles2-mesa-dev
+      - libsdl2-dev
+      - libsdl2-image-dev
+      - libsdl2-ttf-dev
