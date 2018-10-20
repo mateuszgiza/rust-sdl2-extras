@@ -9,7 +9,14 @@ description = "Extras for Rust-SDL2 package"
 [badges]
 travis-ci = { repository = "mateuszgiza/rust-sdl2-extras", branch = "master" }
 
+[dependencies]
+specs = { version = "0.12.3", optional = true }
+
 [dependencies.sdl2]
     version = "0.31"
     default-features = false
     features = ["ttf","image"]
+
+[features]
+default = []
+fspecs = ["specs"]
