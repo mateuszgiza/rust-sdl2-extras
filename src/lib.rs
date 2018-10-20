@@ -1,4 +1,5 @@
 extern crate sdl2;
 
-pub mod managers;
 pub mod adapters;
+pub mod common;
+pub mod managers;
