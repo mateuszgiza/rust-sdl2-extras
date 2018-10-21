@@ -1,8 +1,7 @@
-use sdl2::render::{ Texture, TextureCreator };
-use sdl2::ttf::{ Font, Sdl2TtfContext };
-
 mod resource_manager;
-use self::resource_manager::{ ResourceManager, FontDetails };
+mod font_manager;
+mod texture_manager;
 
-pub type TextureManager<'l, T> = ResourceManager<'l, String, Texture<'l>, TextureCreator<T>>;
-pub type FontManager<'l> = ResourceManager<'l, FontDetails, Font<'l, 'static>, Sdl2TtfContext>;
+pub use self::resource_manager::{ ResourceLoader, ResourceManager };
+pub use self::font_manager::{ FontDetails, FontManager };
+pub use self::texture_manager::TextureManager;
