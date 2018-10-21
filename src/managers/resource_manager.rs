@@ -1,10 +1,13 @@
-use sdl2::image::LoadTexture;
-use sdl2::render::{ Texture, TextureCreator };
-use sdl2::ttf::{ Font, Sdl2TtfContext };
 use std::borrow::Borrow;
 use std::collections::HashMap;
 use std::hash::Hash;
 use std::rc::Rc;
+
+// Generic trait to Load any Resource Kind
+pub trait ResourceLoader<'l, R> {
+    type Args: ?Sized;
+    fn load(&'l self, data: &Self::Args) -> Result<R, String>;
+}
 
 // Generic struct to cache any resource loaded by a ResourceLoader
 pub struct ResourceManager<'l, K, R, L>
@@ -44,45 +47,5 @@ where
             },
             Ok,
         )
-    }
-}
-
-// TextureCreator knows how to load Textures
-impl<'l, T> ResourceLoader<'l, Texture<'l>> for TextureCreator<T> {
-    type Args = str;
-    fn load(&'l self, path: &str) -> Result<Texture, String> {
-        println!("LOADED A TEXTURE");
-        self.load_texture(path)
-    }
-}
-
-// Font Context knows how to load Fonts
-impl<'l> ResourceLoader<'l, Font<'l, 'static>> for Sdl2TtfContext {
-    type Args = FontDetails;
-    fn load(&'l self, details: &FontDetails) -> Result<Font<'l, 'static>, String> {
-        println!("LOADED A FONT");
-        self.load_font(&details.path, details.size)
-    }
-}
-
-// Generic trait to Load any Resource Kind
-pub trait ResourceLoader<'l, R> {
-    type Args: ?Sized;
-    fn load(&'l self, data: &Self::Args) -> Result<R, String>;
-}
-
-// Information needed to load a Font
-#[derive(PartialEq, Eq, Hash)]
-pub struct FontDetails {
-    pub path: String,
-    pub size: u16,
-}
-
-impl<'a> From<&'a FontDetails> for FontDetails {
-    fn from(details: &'a FontDetails) -> FontDetails {
-        FontDetails {
-            path: details.path.clone(),
-            size: details.size,
-        }
     }
 }
