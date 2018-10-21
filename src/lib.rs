@@ -8,6 +8,7 @@
 //! 
 
 extern crate sdl2;
+extern crate floating_duration;
 
 #[cfg(feature = "fspecs")]
 extern crate specs;

@@ -16,7 +16,6 @@ impl WorldExt for World {
     }
 
     fn update_delta_time(&mut self, new_delta: Duration) {
-        let mut delta = self.write_resource::<GameTime>();
-        *delta = GameTime::new(Some(new_delta));
+        self.write_resource::<GameTime>().set_delta(new_delta);
     }
 }

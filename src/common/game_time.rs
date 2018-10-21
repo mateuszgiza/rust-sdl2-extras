@@ -1,17 +1,17 @@
 use std::time::Duration;
+use common::DeltaTime;
 
 #[derive(Default)]
 pub struct GameTime {
-    pub elapsed: Duration
+    pub delta: DeltaTime
 }
 
 impl GameTime {
-    pub fn new(elapsed: Option<Duration>) -> Self {
-        GameTime {
-            elapsed: match elapsed {
-                Some(duration) => duration,
-                None => Duration::from_nanos(0)
-            }
-        }
+    pub fn new() -> Self {
+        GameTime::default()
+    }
+
+    pub fn set_delta(&mut self, delta: Duration) {
+        self.delta = DeltaTime { elapsed: delta }
     }
 }

@@ -1,6 +1,6 @@
 [package]
 name = "sdl2-extras"
-version = "0.0.1"
+version = "0.1.0"
 authors = ["Mateusz Giza <matgizq@gmail.com>"]
 license = "MIT"
 repository = "https://github.com/mateuszgiza/rust-sdl2-extras"
@@ -10,6 +10,7 @@ description = "Extras for Rust-SDL2 package"
 travis-ci = { repository = "mateuszgiza/rust-sdl2-extras", branch = "master" }
 
 [dependencies]
+floating-duration = "0.1.2"
 specs = { version = "0.12.3", optional = true }
 
 [dependencies.sdl2]
@@ -18,5 +19,4 @@ specs = { version = "0.12.3", optional = true }
     features = ["ttf","image"]
 
 [features]
-default = []
 fspecs = ["specs"]
