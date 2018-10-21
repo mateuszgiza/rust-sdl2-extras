@@ -20,3 +20,6 @@ specs = { version = "0.12.3", optional = true }
 
 [features]
 fspecs = ["specs"]
+
+[package.metadata.docs.rs]
+all-features = true
