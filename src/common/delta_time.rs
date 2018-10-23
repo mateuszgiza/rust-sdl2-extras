@@ -7,15 +7,15 @@ pub struct DeltaTime {
     pub elapsed: Duration
 }
 
-impl ops::Mul<DeltaTime> for f32 {
+impl<'a> ops::Mul<&'a DeltaTime> for f32 {
     type Output = f32;
 
-    fn mul(self, rhs: DeltaTime) -> Self {
+    fn mul(self, rhs: &DeltaTime) -> Self {
         self * rhs.elapsed.as_fractional_secs() as f32
     }
 }
 
-impl ops::Mul<f32> for DeltaTime {
+impl<'a> ops::Mul<f32> for &'a DeltaTime {
     type Output = f32;
 
     fn mul(self, rhs: f32) -> Self::Output {
@@ -23,15 +23,15 @@ impl ops::Mul<f32> for DeltaTime {
     }
 }
 
-impl ops::Div<DeltaTime> for f32 {
+impl<'a> ops::Div<&'a DeltaTime> for f32 {
     type Output = f32;
 
-    fn div(self, rhs: DeltaTime) -> Self {
+    fn div(self, rhs: &DeltaTime) -> Self {
         self / rhs.elapsed.as_fractional_secs() as f32
     }
 }
 
-impl ops::Div<f32> for DeltaTime {
+impl<'a> ops::Div<f32> for &'a DeltaTime {
     type Output = f32;
 
     fn div(self, rhs: f32) -> Self::Output {

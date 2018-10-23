@@ -314,7 +314,7 @@ dependencies = [
 
 [[package]]
 name = "sdl2-extras"
-version = "0.1.1"
+version = "0.1.2"
 dependencies = [
  "floating-duration 0.1.2 (registry+https://github.com/rust-lang/crates.io-index)",
  "sdl2 0.31.0 (registry+https://github.com/rust-lang/crates.io-index)",
