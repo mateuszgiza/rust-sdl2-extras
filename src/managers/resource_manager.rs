@@ -19,6 +19,15 @@ where
     cache: HashMap<TKey, Rc<TResult>>,
 }
 
+unsafe impl<'l, TKey, TResult, TLoader> Send for ResourceManager<'l, TKey, TResult, TLoader>
+where
+    TKey: Hash + Eq,
+    TLoader: 'l + ResourceLoader<'l, TResult> {}
+unsafe impl<'l, TKey, TResult, TLoader> Sync for ResourceManager<'l, TKey, TResult, TLoader>
+where
+    TKey: Hash + Eq,
+    TLoader: 'l + ResourceLoader<'l, TResult> {}
+
 impl<'l, TKey, TResult, TLoader> ResourceManager<'l, TKey, TResult, TLoader>
 where
     TKey: Hash + Eq,
