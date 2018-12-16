@@ -1,9 +1,10 @@
 use managers::{FontManager, TextureManager};
 use sdl2::video::WindowContext;
-use sdl2::render::TextureCreator;
+use sdl2::render::{TextureCreator, Texture};
 use common::{TextTexture, FontDetails};
 use sdl2::pixels::Color;
 use sdl2::ttf::Sdl2TtfContext;
+use std::rc::Rc;
 
 pub struct ResourceFacade<'l> {
     font_manager: Option<FontManager<'l>>,
@@ -34,6 +35,8 @@ impl<'l> ResourceFacade<'l> {
         }
     }
 
+    // pub fn load_font(&mut self, font_name: )
+
     pub fn build_text<'a>(&'a mut self, text: &str, font_details: &FontDetails, color: &Color) -> TextTexture<'a> {
         let font = self.font_manager.as_mut().unwrap().load(font_details).unwrap();
         let text_render = font.render(text);
@@ -42,5 +45,9 @@ impl<'l> ResourceFacade<'l> {
         let text_query = text_texture.query();
 
         return TextTexture::new(text_texture, text_query);
+    }
+
+    pub fn get_texture(&mut self, texture_name: &String) -> Result<Rc<Texture>, String> {
+        self.texture_manager.as_mut().unwrap().load(&texture_name)
     }
 }
